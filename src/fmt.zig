@@ -27,6 +27,7 @@ pub const HexDump = @import("HexDump.zig");
 /// - `.skip_noted`  :: skips printing out the value but still notes the existence of the field. E.g. `.field_name = ⋯`.
 /// - `.str`         :: Anything string like gets formatted with `"{s}"`.
 /// - `.fixed_c_str` :: C-like string that can be passed to `std.mem.sliceTo(str, 0)` prior to `"{s}"`.
+/// - `.flags`       :: Prints a list of only enabled fields, skipping any non-bool types. E.g. `(berries citrus stone)`.
 /// - `.unix_time`   :: An int that is convertible into a `std.posix.time_t`, producing an 8601 like date-time str. E.g. `[2025-11-12T17:51:05]`.
 ///                     `libc` needs to be enabled for this field.
 pub fn formatWithHint(T: type, comptime options: anytype) fn (T, *io.Writer) io.Writer.Error!void {
