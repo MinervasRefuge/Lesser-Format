@@ -1,6 +1,8 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: ^:nil
 * Lesser-Format
+[[https://ko-fi.com/Z8Z81D600C][https://ko-fi.com/img/githubbutton_sm.svg]]
+----------
 A format utility for quick custom formatting in Zig. ~zig@0.15.2~.
 
 #+begin_example zig
