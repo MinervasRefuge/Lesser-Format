@@ -3,11 +3,13 @@ const std = @import("std");
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimise = b.standardOptimizeOption(.{});
+    const link_libc = b.option(bool, "link_libc", "link libc?") orelse false;
 
     const mod = b.addModule("Lesser-Format", .{
         .root_source_file = b.path("src/fmt.zig"),
         .target = target,
         .optimize = optimise,
+        .link_libc = link_libc,
     });
 
     _ = mod;

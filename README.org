@@ -29,5 +29,22 @@ A format utility for quick custom formatting in Zig. ~zig@0.15.2~.
 - ~flagsFormat~. Prints out enabled fields in a flag struct (struct with just ~bool~ s). Skips non bool fields.
 - ~HexDump~. Prints out a formatted hex dump from the provided ~u8~ slice.
 
+
+** Project Usage
+Add to your ~build.zig.zon~...
+#+begin_example sh
+  zig fetch --save git+https://codeberg.org/MinervasRefuge/Lesser-Format
+#+end_example
+
+Add to your ~build.zig~...
+#+begin_example zig
+  const dependency_lesser_fmt = b.dependency("LesserFormat", .{
+      .target = target,
+      .optimize = optimise,
+      .link_libc = true, // or `false` if time printing isn't needed
+  });
+  your_module.addImport("Lesser-Format", dependency_lesser_fmt.module("Lesser-Format"));
+#+end_example
+
 ----------
 BSD-3-Clause : Copyright © 2025 Abigale Raeck.

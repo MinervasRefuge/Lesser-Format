@@ -1,6 +1,6 @@
 .{
     .name = .LesserFormat,
-    .version = "0.1.0",
+    .version = "0.1.1",
     .fingerprint = 0x30477e78aa0f0474,
     .minimum_zig_version = "0.15.2",
     .dependencies = .{},
