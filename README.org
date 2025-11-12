@@ -25,7 +25,7 @@ A format utility for quick custom formatting in Zig. ~zig@0.15.2~.
   - ~.str~ : Anything string like gets formatted with ~"{s}"~.
   - ~.fixed_c_str~ : C-like string that can be passed to ~std.mem.sliceTo(str, 0)~ prior to ~"{s}"~.
   - ~.unix_time~ : An int that is convertible into a ~std.posix.time_t~, Print an 8601 like date-time. ~libc~ required.
-- ~time8601Format~. Prints out a 8601 like time-date from a Linux epoch. ~[2025-11-12T17:51:05]~.
+- ~time8601Format~. Prints out a 8601 like time-date from a Linux epoch. ~[2025-11-12T17:51:05]~. ~libc~ required.
 - ~flagsFormat~. Prints out enabled fields in a flag struct (struct with just ~bool~ s). Skips non bool fields.
 - ~HexDump~. Prints out a formatted hex dump from the provided ~u8~ slice.
 
