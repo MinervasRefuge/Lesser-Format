@@ -1,0 +1,31 @@
+#+OPTIONS: toc:nil
+#+OPTIONS: ^:nil
+* Lesser-Format
+A format utility for quick custom formatting in Zig. ~zig@0.15.2~.
+
+#+begin_example zig
+  const Example = struct {
+      a: u8,
+      b: u16, // as hex
+      c: bool, // skipped
+      d: []u8, // str
+
+      pub const format = formatWithHint(@This(), .{ .b = "0x{X}", .d = .str, .c = .skip});
+  };
+#+end_example
+
+** API
+- ~formatWithHint~. Creates a fmt function, changing the behaviour of matching fields. Value args follow...
+  - ~<fn>~ : calls the fn like a format procedure for that field.
+  - ~<ptr>~ : assumption is a format string, concat and use.
+  - ~.skip~ : skips and doesn't print the field.
+  - ~.skip_noted~ : skips printing out the value but still notes the existence of the field. E.g. ~.field_name = ⋯~.
+  - ~.str~ : Anything string like gets formatted with ~"{s}"~.
+  - ~.fixed_c_str~ : C-like string that can be passed to ~std.mem.sliceTo(str, 0)~ prior to ~"{s}"~.
+  - ~.unix_time~ : An int that is convertible into a ~std.posix.time_t~, Print an 8601 like date-time. ~libc~ required.
+- ~time8601Format~. Prints out a 8601 like time-date from a Linux epoch. ~[2025-11-12T17:51:05]~.
+- ~flagsFormat~. Prints out enabled fields in a flag struct (struct with just ~bool~ s). Skips non bool fields.
+- ~HexDump~. Prints out a formatted hex dump from the provided ~u8~ slice.
+
+----------
+BSD-3-Clause : Copyright © 2025 Abigale Raeck.
